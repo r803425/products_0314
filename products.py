@@ -1,4 +1,15 @@
 # 記帳程式
+# 5.讀取檔案
+products = []
+with open('products.csv', 'r', encoding = 'utf-8') as f:
+    for line in f:
+        if '商品,價格' in line:
+            continue # 強制跳下一迴圈，並不是逃出迴圈
+        name, price = line.strip().split(',')
+        products.append([name, price])
+print(products)
+print('---------------------------------')
+
 # １.輸入商品名稱(輸入q離開)／價格， 並存入列表
 products = []
 while True:
@@ -28,4 +39,3 @@ with open('products.csv', 'w', encoding = 'utf-8') as f:
     f.write('商品,價格\n')
     for p in products:
         f.write(p[0] + ',' + p[1] + '\n')
-
